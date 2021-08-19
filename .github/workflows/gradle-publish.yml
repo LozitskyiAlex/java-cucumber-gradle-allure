@@ -3,16 +3,8 @@
 
 name: Run UI Tests
 
-on: 
-  push:
-    branches-ignore:
-      - '!master' # ignore gh-pages
-    paths:
-      - '!.gitlab-ci.yml'
-      - '!allure-template.yml'
-      - '**/allure-history.yml'
-      - 'allure-report-action/*'
-      
+on: push
+
 jobs:
   autotests:
     name: Upload allure results to Allure EE
