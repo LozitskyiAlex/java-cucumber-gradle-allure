@@ -1,0 +1,42 @@
+{
+  "4ffbffea835e737a244b1030dacd283" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "7dba29ef17ae452c",
+      "reportUrl" : "https://LozitskyiAlex.github.io/java-cucumber-gradle-allure/9//#testresult/7dba29ef17ae452c",
+      "status" : "passed",
+      "time" : {
+        "start" : 1629368334151,
+        "stop" : 1629368347129,
+        "duration" : 12978
+      }
+    } ]
+  },
+  "abe7089a4bc65c9b55776cc11cea4198" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4e018f1203d10374",
+      "reportUrl" : "https://LozitskyiAlex.github.io/java-cucumber-gradle-allure/9//#testresult/4e018f1203d10374",
+      "status" : "passed",
+      "time" : {
+        "start" : 1629368333960,
+        "stop" : 1629368347226,
+        "duration" : 13266
+      }
+    } ]
+  }
+}

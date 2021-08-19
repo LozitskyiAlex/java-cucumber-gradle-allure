@@ -1,0 +1,10 @@
+[ {
+  "name" : "GitHub Actions",
+  "type" : "github",
+  "url" : "https://LozitskyiAlex.github.io/java-cucumber-gradle-allure",
+  "buildOrder" : 9,
+  "buildName" : "GitHub Actions Run #1146563432",
+  "buildUrl" : "https://github.com/LozitskyiAlex/java-cucumber-gradle-allure/actions/runs/1146563432",
+  "reportName" : "Allure Report with history",
+  "reportUrl" : "https://LozitskyiAlex.github.io/java-cucumber-gradle-allure/9/"
+} ]

@@ -1,0 +1,39 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "children" : [ {
+    "name" : "Runs Cucumber Scenarios",
+    "uid" : "4e018f1203d10374",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1629368333960,
+      "stop" : 1629368347226,
+      "duration" : 13266
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "\"run first test\"", "\"First test\"" ]
+  }, {
+    "name" : "First test",
+    "children" : [ {
+      "name" : "run first test",
+      "children" : [ {
+        "name" : "run first test",
+        "uid" : "7dba29ef17ae452c",
+        "parentUid" : "12bc8a15c360c9fbdc84bb77f83973df",
+        "status" : "passed",
+        "time" : {
+          "start" : 1629368334151,
+          "stop" : 1629368347129,
+          "duration" : 12978
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "12bc8a15c360c9fbdc84bb77f83973df"
+    } ],
+    "uid" : "0ccd8f93ca9b4f7404888661b3d209b1"
+  } ],
+  "name" : "behaviors"
+}
