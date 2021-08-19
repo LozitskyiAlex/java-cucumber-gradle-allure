@@ -1,0 +1,21 @@
+[ {
+  "uid" : "ac5d4653d111febc",
+  "name" : "Runs Cucumber Scenarios",
+  "time" : {
+    "start" : 1629368599069,
+    "stop" : 1629368625044,
+    "duration" : 25975
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "635c6abc470ee2e1",
+  "name" : "run first test",
+  "time" : {
+    "start" : 1629368599214,
+    "stop" : 1629368624922,
+    "duration" : 25708
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
