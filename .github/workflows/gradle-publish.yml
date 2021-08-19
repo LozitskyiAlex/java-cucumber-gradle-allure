@@ -65,21 +65,3 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history/allure-history
-      
-# jobs:
-#   build:
-
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       packages: write
-
-#     steps:
-#     - uses: actions/checkout@v2
-    
-      
-#     - name: Build with Gradle
-#       run: 
-
-#     - name: Allure Report with history
-#       uses: simple-elf/allure-report-action@v1.5
