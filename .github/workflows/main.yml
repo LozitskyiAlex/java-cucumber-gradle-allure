@@ -12,7 +12,8 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '8'
-        
+          distribution: 'adopt-hotspot'
+          
       - name: Run headless test
         run: |
           - ./gradlew clean test --info
