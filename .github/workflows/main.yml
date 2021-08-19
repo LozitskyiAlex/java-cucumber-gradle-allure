@@ -14,7 +14,12 @@ jobs:
           java-version: '8'
           distribution: 'adopt-hotspot'
           
+      - name: Permission for gradlew
+        run: chmod +x gradlew 
+        
       - name: Run headless test
-        run: |
-          - ./gradlew clean test --info
-          - ./gradlew allureReport
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: |
+            - ./gradlew clean test --info
+            - ./gradlew allureReport
