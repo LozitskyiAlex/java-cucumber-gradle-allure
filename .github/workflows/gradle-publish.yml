@@ -26,26 +26,8 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew clean test --info
-    - name: Get Allure history
-      uses: actions/checkout@v2
-      if: always()
-      continue-on-error: true
-      with:
-        ref: main
-        path: main
 
-    - name: Allure Report action
-      uses: ./allure-report-action
-      if: always()
-      with:
-        allure_results: build/allure-results
-        allure_history: allure-history/allure-history
-        keep_reports: 5
-
-    - name: Deploy report to Github Pages
-      if: always()
-      uses: peaceiris/actions-gh-pages@v2
-      env:
-        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PUBLISH_BRANCH: main
-        PUBLISH_DIR: allure-history/allure-history
+    - name: Allure Report with history
+      # You may pin to the exact commit or the version.
+      # uses: simple-elf/allure-report-action@9ba7223209280e77edb80545dbb5b8b123a06f6b
+      uses: simple-elf/allure-report-action@v1.5
