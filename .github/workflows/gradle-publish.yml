@@ -3,31 +3,91 @@
 
 name: Run UI Tests
 
-on: push
-
+on: 
+  push:
+    branches-ignore:
+      - '!master' # ignore gh-pages
+    paths:
+      - '!.gitlab-ci.yml'
+      - '!allure-template.yml'
+      - '**/allure-history.yml'
+      - 'allure-report-action/*'
+      
 jobs:
-  build:
-
+  autotests:
+    name: Upload allure results to Allure EE
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew clean test --info
+      - uses: actions/checkout@v2
 
-    - name: Allure Report with history
-      # You may pin to the exact commit or the version.
-      # uses: simple-elf/allure-report-action@9ba7223209280e77edb80545dbb5b8b123a06f6b
-      uses: simple-elf/allure-report-action@v1.5
+      - uses: actions/cache@v1
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
+      - name: Install dependencies
+        run: ./gradlew compileTestJava
+
+      - name: Run Test
+        if: always()
+        run: ./gradlew clean test --info
+        continue-on-error: true
+
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure Report action
+        uses: simple-elf/allure-report-action@master
+        #uses: ./allure-report-action
+        if: always()
+        #id: allure-report
+        with:
+          allure_results: build/allure-results
+          #gh_pages: gh-pages
+          #allure_report: allure-report
+          allure_history: allure-history/allure-history
+          keep_reports: 5
+
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history/allure-history
+      
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       packages: write
+
+#     steps:
+#     - uses: actions/checkout@v2
+    
+      
+#     - name: Build with Gradle
+#       run: 
+
+#     - name: Allure Report with history
+#       uses: simple-elf/allure-report-action@v1.5
